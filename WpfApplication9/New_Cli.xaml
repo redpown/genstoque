@@ -1,0 +1,614 @@
+﻿<Window x:Class="WpfApplication9.New_Cli"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication9"
+        mc:Ignorable="d"
+        Title="New_Cli" WindowStyle="None" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="Resources/uhair-button-hove.png"/>
+        <ImageBrush x:Key="Button.MouseOver.Border" ImageSource="Resources/uhair-button-hove.png"/>
+        <ImageBrush x:Key="Button.Pressed.Background" ImageSource="Resources/uhair-button-press.png"/>
+        <ImageBrush x:Key="Button.Pressed.Border" ImageSource="Resources/uhair-button-press.png"/>
+        <ImageBrush x:Key="Button.Disabled.Background" ImageSource="Resources/uhair-button.png"/>
+        <ImageBrush x:Key="Button.Disabled.Border" ImageSource="Resources/uhair-button.png"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="bnt_del-cli" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid x:Name="bar_top_container" Height="35" VerticalAlignment="Top" Margin="0,-1,0,0">
+            <Image x:Name="bar_top" Source="Resources/uhair-bar.png" OpacityMask="Black" Stretch="UniformToFill" Height="35" VerticalAlignment="Top" Margin="-3.626,0,0,0"/>
+            <Button x:Name="bnt_min" Content="" HorizontalAlignment="Right" Height="30" Margin="0,2,70,0" VerticalAlignment="Top" Width="30" BorderThickness="0" Style="{DynamicResource bnt_min}" Click="bnt_min_Click">
+                <Button.Resources>
+                    <Style x:Key="FocusVisual">
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+                    <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+                    <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="Resources/uhair-mim-hover.png"/>
+                    <ImageBrush x:Key="Button.MouseOver.Border" ImageSource="Resources/uhair-mim-hover.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Background" ImageSource="Resources/uhair-mim-press.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Border" ImageSource="Resources/uhair-mim-press.png"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+                    <Style x:Key="bnt_min" TargetType="{x:Type Button}">
+                        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsDefaulted" Value="true">
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/uhair-mim.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="bnt_res" Content="" HorizontalAlignment="Right" Height="30" Margin="0,2,35,0" VerticalAlignment="Top" Width="30" BorderThickness="0" Style="{DynamicResource bnt_res}" RenderTransformOrigin="0.5,0.5" Click="bnt_res_Click">
+                <Button.Resources>
+                    <Style x:Key="FocusVisual">
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+                    <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+                    <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="Resources/uhair-rest-hover.png"/>
+                    <ImageBrush x:Key="Button.MouseOver.Border" ImageSource="Resources/uhair-rest-hover.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Background" ImageSource="Resources/uhair-rest-press.png"/>
+                    <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+                    <ImageBrush x:Key="Button.Disabled.Border" ImageSource="Resources/uhair-rest-press.png"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+                    <Style x:Key="bnt_res" TargetType="{x:Type Button}">
+                        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsDefaulted" Value="true">
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/uhair-rest.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="bnt_close" Content="" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top" Width="30" BorderThickness="0" Style="{DynamicResource bnt_clo}" Click="bnt_close_Click" Margin="0,2,0,0">
+                <Button.Resources>
+                    <Style x:Key="FocusVisual">
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+                    <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+                    <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="Resources/uhair-close-hover.png"/>
+                    <ImageBrush x:Key="Button.MouseOver.Border" ImageSource="Resources/uhair-close-hover.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Background" ImageSource="Resources/uhair-close-press.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Border" ImageSource="Resources/uhair-close-press.png"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+                    <Style x:Key="bnt_clo" TargetType="{x:Type Button}">
+                        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsDefaulted" Value="true">
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/uhair-close.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+        <Grid x:Name="menu" RenderTransformOrigin="0.5,0.44" Margin="0,39,0,-0.514" Width="761" Height="489">
+            <Button x:Name="voltar" Content="Voltar" HorizontalAlignment="Right" Margin="0,0,46.36,24.606" Width="74" Click="voltar_Click" VerticalAlignment="Bottom" Height="25" BorderThickness="0" FontFamily="Segoe UI Black">
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="update" Content="Atualizar" Margin="132.727,0,0,24.606" HorizontalAlignment="Left" Width="74" RenderTransformOrigin="1.088,0.461" Height="25" VerticalAlignment="Bottom" BorderThickness="0" Click="update_Click" FontFamily="Segoe UI Black" Style="{DynamicResource bnt-update-cli}">
+                <Button.Resources>
+                    <Style x:Key="FocusVisual">
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+                    <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+                    <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="Resources/uhair-button-hove.png"/>
+                    <ImageBrush x:Key="Button.MouseOver.Border" ImageSource="Resources/uhair-button-hove.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Background" ImageSource="Resources/uhair-button-press.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Border" ImageSource="Resources/uhair-button-press.png"/>
+                    <ImageBrush x:Key="Button.Disabled.Background" ImageSource="Resources/uhair-button.png"/>
+                    <ImageBrush x:Key="Button.Disabled.Border" ImageSource="Resources/uhair-button.png"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+                    <Style x:Key="bnt-update-cli" TargetType="{x:Type Button}">
+                        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsDefaulted" Value="true">
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="deletar" Content="Deletar" Margin="232.309,0,0,24.606" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="25" Width="74" BorderThickness="0" Click="deletar_Click" FontFamily="Segoe UI Black" Style="{DynamicResource bnt_del-cli}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="inseir" Content="Salvar" Margin="36.578,0,0,24.606" HorizontalAlignment="Left" Width="74" Height="25" VerticalAlignment="Bottom" BorderThickness="0" Click="inseir_Click" Style="{DynamicResource bnt-inserir}" FontFamily="Segoe UI Black">
+                <Button.Resources>
+                    <Style x:Key="FocusVisual">
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+                    <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+                    <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="Resources/uhair-button-hove.png"/>
+                    <ImageBrush x:Key="Button.MouseOver.Border" ImageSource="Resources/uhair-button-hove.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Background" ImageSource="Resources/uhair-button-press.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Border" ImageSource="Resources/uhair-button-press.png"/>
+                    <ImageBrush x:Key="Button.Disabled.Background" ImageSource="Resources/uhair-button.png"/>
+                    <ImageBrush x:Key="Button.Disabled.Border" ImageSource="Resources/uhair-button.png"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+                    <Style x:Key="bnt-inserir" TargetType="{x:Type Button}">
+                        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsDefaulted" Value="true">
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                </Button.Background>
+            </Button>
+            <ComboBox x:Name="comboBox_tipo_pessoas" HorizontalAlignment="Left" Height="23" Margin="36.5,47.514,0,0" VerticalAlignment="Top" Width="170" ToolTip="combo" Cursor="Hand" SelectedIndex="0" BorderThickness="0">
+                <ComboBox.Background>
+                    <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                </ComboBox.Background>
+                <ComboBoxItem Content="Selecionar tipo de Pessoa" Height="23" Width="170" BorderThickness="0">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+                <ComboBoxItem Content="Juridica" HorizontalAlignment="Center" Height="23" VerticalAlignment="Center" Width="170">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+                <ComboBoxItem Content="Fisica" HorizontalAlignment="Center" Height="23" VerticalAlignment="Center" Width="170">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+            </ComboBox>
+            <TextBox x:Name="campo_cod" Margin="36.578,94.514,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="166" Height="23" VerticalAlignment="Top" BorderThickness="0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="Resources/uhair-field-p.png"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox x:Name="campo_nome" Margin="232.309,94.514,46.36,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" BorderThickness="0" Width="482" MouseEnter="CodGenarator">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="Resources/uhair-field-g.png"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox x:Name="campo_endereco" Margin="36,144.524,359,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" Style="{DynamicResource TextBoxStyle1}" BorderThickness="0" Width="364">
+                <TextBox.Resources>
+                    <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+                    <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+                    <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+                    <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+                        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        <Setter Property="AllowDrop" Value="true"/>
+                        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TextBox}">
+                                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                                            <ScrollViewer.Background>
+                                                <ImageBrush ImageSource="Resources/uhair-field-m.png"/>
+                                            </ScrollViewer.Background>
+                                        </ScrollViewer>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsKeyboardFocused" Value="true">
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                                    <Condition Property="IsSelectionActive" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                            </MultiTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Resources>
+                <TextBox.Background>
+                    <ImageBrush Stretch="UniformToFill"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox x:Name="campo_cep" Margin="36,193.484,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="170" Height="23" VerticalAlignment="Top" BorderThickness="0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="Resources/uhair-field-p.png"/>
+                </TextBox.Background>
+            </TextBox>
+            <ComboBox x:Name="comboBox_uf" Margin="232.309,193.484,359,0" ToolTip="combo" Cursor="Hand" SelectedIndex="0" Height="23" VerticalAlignment="Top" BorderThickness="0" Width="170">
+                <ComboBox.BorderBrush>
+                    <ImageBrush ImageSource="Resources/uhair-button-hove.png"/>
+                </ComboBox.BorderBrush>
+                <ComboBoxItem Content="Selecionar Estado" Height="23" Width="170">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+                <ComboBoxItem Content="Juridica" HorizontalAlignment="Center" Height="23" VerticalAlignment="Center" Width="170">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+                <ComboBoxItem Content="Fisica" HorizontalAlignment="Center" Height="23" VerticalAlignment="Center" Width="170">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name="comboBox_cidade" HorizontalAlignment="Right" Margin="0,193,157.36,0" Width="170" ToolTip="combo" Cursor="Hand" SelectedIndex="0" Height="23" VerticalAlignment="Top" BorderThickness="0" BorderBrush="#FFFF8C8C">
+                <ComboBox.Background>
+                    <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                </ComboBox.Background>
+                <ComboBoxItem Content="Selecionar Municipio" Height="23" Width="170">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+                <ComboBoxItem Content="Juridica" HorizontalAlignment="Center" Height="23" VerticalAlignment="Center" Width="170">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="Resources/uhair-button.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+                <ComboBoxItem Content="Fisica" HorizontalAlignment="Center" Height="23" VerticalAlignment="Center" Width="168">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="Resources/uhair-bar.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+            </ComboBox>
+            <TextBox x:Name="campo_tel" Margin="36,242.444,0,223.07" TextWrapping="Wrap" HorizontalAlignment="Left" Width="170" Height="23" BorderThickness="0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="Resources/uhair-field-p.png"/>
+                </TextBox.Background>
+            </TextBox>
+            <Label x:Name="label_tipo_pessoa" Content="Tipo de Pessoa" HorizontalAlignment="Left" Margin="37.5,24.514,0,0" VerticalAlignment="Top" Width="90" Height="23"/>
+            <Label x:Name="label_cpf_cnpj" Content="CPF/CNPJ" HorizontalAlignment="Left" Margin="37.5,71.514,0,0" VerticalAlignment="Top" Width="61" Height="23"/>
+            <Label x:Name="label_endereco" Content="Endereço" HorizontalAlignment="Left" Margin="36,118.564,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_cep" Content="CEP" HorizontalAlignment="Left" Margin="36,167.524,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_tel" Content="Telefone" HorizontalAlignment="Left" Margin="36,216.484,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_nome" Content="Nome" HorizontalAlignment="Left" Margin="233.5,71.514,0,0" VerticalAlignment="Top" Width="90" Height="23"/>
+            <Label x:Name="label_cel" Content="Celular" HorizontalAlignment="Left" Margin="232.309,216.484,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="campo_bairro" Margin="0,143.474,46.36,0" TextWrapping="Wrap" HorizontalAlignment="Right" Width="281" Height="23" VerticalAlignment="Top" Style="{DynamicResource TextBoxStyle1}" BorderThickness="0">
+                <TextBox.Resources>
+                    <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+                    <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+                    <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+                    <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+                        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        <Setter Property="AllowDrop" Value="true"/>
+                        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TextBox}">
+                                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                                            <ScrollViewer.Background>
+                                                <ImageBrush ImageSource="Resources/uhair-field-m.png"/>
+                                            </ScrollViewer.Background>
+                                        </ScrollViewer>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsKeyboardFocused" Value="true">
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                                    <Condition Property="IsSelectionActive" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                            </MultiTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <Label x:Name="label_bairro" Content="Bairro" HorizontalAlignment="Right" Margin="0,117.514,276.09,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="campo_senha" Margin="36.578,0,0,169.11" TextWrapping="Wrap" HorizontalAlignment="Left" Width="170" Height="23" VerticalAlignment="Bottom" BorderThickness="0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="Resources/uhair-field-p.png"/>
+                </TextBox.Background>
+            </TextBox>
+            <Label x:Name="label_senha" Content="Senha" HorizontalAlignment="Left" Margin="36.578,0,0,192.11" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="campo_repetir_senha" Margin="36,0,0,115.15" TextWrapping="Wrap" HorizontalAlignment="Left" Width="170" Height="23" VerticalAlignment="Bottom" BorderThickness="0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="Resources/uhair-field-p.png"/>
+                </TextBox.Background>
+            </TextBox>
+            <Label x:Name="label_repitir_senha" Content="Repetir Senha" HorizontalAlignment="Left" Margin="36,0,0,138.15" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="campo_email" Margin="36,0,0,66.19" TextWrapping="Wrap" HorizontalAlignment="Left" Width="170" Height="23" VerticalAlignment="Bottom" BorderThickness="0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="Resources/uhair-field-p.png"/>
+                </TextBox.Background>
+            </TextBox>
+            <Label x:Name="label_email" Content="E-mail" HorizontalAlignment="Left" Margin="36,0,0,89.19" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="campo_cel" Margin="231,242.444,359,223.07" TextWrapping="Wrap" Width="170" Height="23" BorderThickness="0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="Resources/uhair-field-p.png"/>
+                </TextBox.Background>
+            </TextBox>
+            <Label x:Name="label_uf" Content="UF" HorizontalAlignment="Left" Margin="231,168.04,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_cidade" Content="Municipio" HorizontalAlignment="Right" Margin="0,167.04,252.93,0" VerticalAlignment="Top"/>
+        </Grid>
+
+    </Grid>
+</Window>

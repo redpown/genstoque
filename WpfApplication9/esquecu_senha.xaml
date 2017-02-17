@@ -1,0 +1,91 @@
+﻿<Window x:Class="WpfApplication9.esquecu_senha"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication9"
+        mc:Ignorable="d"
+        Title="esquecu_senha" Height="400" Width="400" WindowStyle="None">
+    <Grid Margin="0,0,-8,3" Width="401" Height="390">
+        <Grid x:Name="menu" RenderTransformOrigin="0.5,0.44" Margin="-4,39,0,0" HorizontalAlignment="Left" Width="396" Height="351">
+            <Button x:Name="voltar" Content="Voltar" Margin="79.078,0,46.922,43.849" Click="voltar_Click" VerticalAlignment="Bottom" Height="25" BorderThickness="0" Width="270"/>
+            <TextBox x:Name="user_email" Margin="31.65,52.553,0,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170"/>
+            <TextBox x:Name="user_senha" Margin="32.987,129.965,0,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="170"/>
+            <TextBox x:Name="user_chave" Margin="0,0,14.101,275.025" TextWrapping="Wrap" Height="23" HorizontalAlignment="Right" Width="170" VerticalAlignment="Bottom"/>
+            <Button x:Name="update" Content="Atualizar" Margin="79.998,0,46.002,98.308" RenderTransformOrigin="1.088,0.461" BorderThickness="0" Click="update_Click" Width="270" Height="25" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment"/>
+            <Label x:Name="label_user_name" Content="Usuario:" Margin="38.917,0,0,302.4" HorizontalAlignment="Left" Height="25" Width="52" VerticalAlignment="Bottom"/>
+            <Label x:Name="label_user_name_Copy" Content="Senha:" Margin="41.071,0,254.929,237.416" Height="25" VerticalAlignment="Bottom" Width="100"/>
+            <Label x:Name="label_user_name_Copy1" Content="Chave de Segurança:" Margin="0,0,15.3,302.455" HorizontalAlignment="Right" Width="130" Height="25" VerticalAlignment="Bottom"/>
+        </Grid>
+        <Grid x:Name="bar_top_container" Height="35" VerticalAlignment="Top" Margin="0,-1,10.25,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="27*"/>
+            </Grid.RowDefinitions>
+            <Image x:Name="bar_top" Source="Resources/uhair-bar.png" OpacityMask="Black" Stretch="UniformToFill" Height="35" Margin="0,0,-1.187,0" Width="400" Grid.RowSpan="2" d:LayoutOverrides="Width"/>
+            <Button x:Name="bnt_close" Content="" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top" Width="30" BorderThickness="0" Style="{DynamicResource bnt_clo}" Click="bnt_close_Click" Margin="0,2,8.5,0" Grid.RowSpan="2">
+                <Button.Resources>
+                    <Style x:Key="FocusVisual">
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+                    <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+                    <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="Resources/uhair-close-hover.png"/>
+                    <ImageBrush x:Key="Button.MouseOver.Border" ImageSource="Resources/uhair-close-hover.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Background" ImageSource="Resources/uhair-close-press.png"/>
+                    <ImageBrush x:Key="Button.Pressed.Border" ImageSource="Resources/uhair-close-press.png"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+                    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+                    <Style x:Key="bnt_clo" TargetType="{x:Type Button}">
+                        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsDefaulted" Value="true">
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="true">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/uhair-close.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+
+    </Grid>
+</Window>
