@@ -1,0 +1,2 @@
+# genstoque
+gerenciador de estoque
